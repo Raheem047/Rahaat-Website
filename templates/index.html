@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-shirt Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the T-shirt Store</h1>
+    </header>
+    <main>
+        <section class="product-list">
+            {% for tshirt in tshirts %}
+                <div class="product-item">
+                    <a href="{{ url_for('tshirt_detail', tshirt_id=tshirt.id) }}">
+                        <img src="{{ url_for('static', filename='images/your-image.png') }}" alt="{{ tshirt.name }}">
+                        <h2>{{ tshirt.name }}</h2>
+                        <p>Price: {{ tshirt.price }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>
